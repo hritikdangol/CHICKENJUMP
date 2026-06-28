@@ -1,12 +1,13 @@
-class Path {
+import java.util.Random;
+public class Path {
     private int pathNum;
     private double multiplier;
     private boolean fire;
-
-    Path(int pathNum, double multiplier, boolean fire) {
+    private static Random random = new Random();
+    public Path(int pathNum) {
         this.pathNum = pathNum;
-        this.multiplier = multiplier;
-        this.fire = fire;
+        this.multiplier = 1.0 + (pathNum * 0.25);
+        this.fire = random.nextBoolean();
     }
 
     public int getPathNum() {
@@ -23,5 +24,14 @@ class Path {
 
     public void setFire(boolean fire) {
         this.fire = fire;
+    }
+
+    public void displayPath() {
+        System.out.println("Path " + pathNum);
+        System.out.println("Multiplier: " + multiplier + "x");
+
+        if (fire) {
+            System.out.println("GameOver");
+        }
     }
 }

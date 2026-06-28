@@ -1,22 +1,32 @@
-class Chicken {
-    private double x,y,width,height;
+public class Chicken {
+    private double x, y, width, height;
     private boolean isJumping;
-    Chicken(double x, double y, double w,double h, boolean isJumping){
-        this.x=x;
-        this.y=y;
-        this.width=w;
-        this.height=h;
-        this.isJumping=isJumping;
+    public Chicken(double x, double y, double width, double height) {
+        this.x = x;
+        this.y = y;
+        this.width = width;
+        this.height = height;
+        this.isJumping = false;
     }
-    public void jump(){
-        isJumping= true;
-        System.out.println("JUmped");
+    public void jump() {
+        if (!isJumping) {
+            isJumping = true;
+            System.out.println("Jumped");
+        }
     }
-    public void land(){
-        isJumping=false;
+    public void land() {
+        isJumping = false;
     }
-    public void move(double x){
-        x++;
+    public void move(double distance) {
+        this.x += distance;
     }
-    
+    public double getX() {
+        return x;
+    }
+    public double getY() {
+        return y;
+    }
+    public boolean isJumping() {
+        return isJumping;
+    }
 }
