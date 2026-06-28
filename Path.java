@@ -9,23 +9,18 @@ public class Path {
         this.multiplier = 1.0 + (pathNum * 0.25);
         this.fire = random.nextBoolean();
     }
-
     public int getPathNum() {
         return pathNum;
     }
-
     public double getMultiplier() {
         return multiplier;
     }
-
     public boolean hasFire() {
         return fire;
     }
-
     public void setFire(boolean fire) {
         this.fire = fire;
     }
-
     public void displayPath() {
         System.out.println("Path " + pathNum);
         System.out.println("Multiplier: " + multiplier + "x");

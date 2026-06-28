@@ -5,13 +5,11 @@ public class Game {
     private ArrayList<Path> paths;
     private int currentPath;
     private boolean gameOver;
-
     public Game(Player player, Chicken chicken) {
         this.player = player;
         this.chicken = chicken;
 
         paths = new ArrayList<>();
-
         currentPath = 0;
         gameOver = false;
     }
