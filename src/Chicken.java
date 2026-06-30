@@ -1,0 +1,33 @@
+package src;
+public class Chicken {
+    private double x, y, width, height;
+    private boolean isJumping;
+    public Chicken(double x, double y, double width, double height) {
+        this.x = x;
+        this.y = y;
+        this.width = width;
+        this.height = height;
+        this.isJumping = false;
+    }
+    public void jump() {
+        if (!isJumping) {
+            isJumping = true;
+            System.out.println("Jumped");
+        }
+    }
+    public void land() {
+        isJumping = false;
+    }
+    public void move(double distance) {
+        this.x += distance;
+    }
+    public double getX() {
+        return x;
+    }
+    public double getY() {
+        return y;
+    }
+    public boolean isJumping() {
+        return isJumping;
+    }
+}
