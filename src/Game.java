@@ -16,11 +16,11 @@ public class Game {
     }
     public void startGame() {
         paths.clear();
-        for (int i = 1; i <= 15; i++) {
+        for (int i = 1; i <= 15; i++) {   //total path 15 wata xa ((limited pathss))
             paths.add(new Path(i));
         }
         currentPath = 0;
-        gameOver = false;
+        gameOver = false;            
         System.out.println("Game Started!");
     }
     public void jump() {
@@ -28,10 +28,11 @@ public class Game {
             return;
         }
         else
-        chicken.jump();
+        chicken.jump();   //path agadi badhxaa jump garda
         currentPath++;
-        if (currentPath <= paths.size()) {
-            Path current = paths.get(currentPath - 1);
+        if (currentPath <= paths.size()-1) {    //15-1== trueeeee 14 samma janxa
+            Path current = paths.get(currentPath);  
+            currentPath++;
             if (current.hasFire()) {
                 System.out.println("Game Over!");
                 gameOver = true;
@@ -41,12 +42,12 @@ public class Game {
             }
         }
         if (currentPath == paths.size() && !gameOver) {
-            System.out.println("Congratulations! You crossed all paths!");
+            Path current = paths.get(currentPath - 1);
+            System.out.println("Congratulations! You won! \nAmount won:" + (player.getBalance() * current.getMultiplier()));
         }
     }
     public void cashOut() {
         if (gameOver) {
-            System.out.println("Cannot Cash Out!");
             return;
         }
         if (currentPath == 0) {

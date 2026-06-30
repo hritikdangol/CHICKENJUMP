@@ -1,6 +1,5 @@
 package src;
 import javax.swing.*;
-
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,6 +9,7 @@ public class GameGUI extends JFrame {
     private JTextField betField;
     private JButton betButton;
     private JButton startButton;
+    private Player player = new Player(1000);
     public GameGUI() {
 
         setTitle("Chicken Jump");
@@ -21,12 +21,33 @@ public class GameGUI extends JFrame {
         betButton = new JButton("Place Bet");
         startButton = new JButton("Start Game");
 
-        betButton.addActionListener(new ActionListener() { 
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                betButton.setText("Bet Successful");
-            }
-        });
+
+
+      betButton.addActionListener(e -> {
+    try {
+        double bet = Double.parseDouble(betField.getText());
+
+        player.placeBet(bet);
+
+        JOptionPane.showMessageDialog(
+                this,
+                "Bet Successful!"
+        );
+        
+        balanceLabel.setText("Available Balance: $" + player.getBalance());
+    } catch (Invalidbetexception | InsufficientbalanceException ex) {
+        JOptionPane.showMessageDialog(this,ex.getMessage(), "Error",
+                JOptionPane.ERROR_MESSAGE
+        );
+
+    } catch (NumberFormatException ex) {
+
+        JOptionPane.showMessageDialog(this,"Please enter a valid number.", "Error",
+                JOptionPane.ERROR_MESSAGE
+        );
+    }
+});
+
         startButton.addActionListener(new ActionListener() { 
             @Override
             public void actionPerformed(ActionEvent e) {

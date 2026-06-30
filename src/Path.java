@@ -26,7 +26,7 @@ public class Path {
         System.out.println("Path " + pathNum);
         System.out.println("Multiplier: " + multiplier + "x");
 
-        if (fire) {
+        if (fire==true) {
             System.out.println("GameOver");
         }
     }
