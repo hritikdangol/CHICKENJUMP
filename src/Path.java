@@ -7,7 +7,7 @@ public class Path {
     private static Random random = new Random();
     public Path(int pathNum) {
         this.pathNum = pathNum;
-        this.multiplier = 1.0 + (pathNum * 0.25);
+        this.multiplier = 1.0 + (pathNum * 1.25);
         this.fire = random.nextBoolean();
     }
     public int getPathNum() {
@@ -29,5 +29,9 @@ public class Path {
         if (fire==true) {
             System.out.println("GameOver");
         }
+    }
+    public static void main(String[] args) {
+        Path p = new Path(15);
+        p.displayPath();
     }
 }

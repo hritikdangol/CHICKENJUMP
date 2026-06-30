@@ -37,8 +37,7 @@ public class Game {
                 System.out.println("Game Over!");
                 gameOver = true;
             } else {
-                System.out.println("Safe");
-                System.out.println("Multiplier : " + current.getMultiplier() + "x");
+     currentPath++;
             }
         }
         if (currentPath == paths.size() && !gameOver) {

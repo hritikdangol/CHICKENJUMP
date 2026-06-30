@@ -30,4 +30,5 @@ public class Chicken {
     public boolean isJumping() {
         return isJumping;
     }
-}
+
+    }

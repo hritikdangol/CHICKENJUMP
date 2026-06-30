@@ -1,7 +1,10 @@
 package src;
 public class Player {
-    private double balance;
+    private double balance=0;
     private double currentBet;
+    public Player() {
+        this(0);
+    }
     public Player(double balance) {
         this.balance = balance;
         this.currentBet = 0;
