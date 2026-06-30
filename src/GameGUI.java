@@ -28,23 +28,15 @@ public class GameGUI extends JFrame {
         double bet = Double.parseDouble(betField.getText());
 
         player.placeBet(bet);
-
-        JOptionPane.showMessageDialog(
-                this,
-                "Bet Successful!"
+        JOptionPane.showMessageDialog(this,"Bet Successful!"
         );
-        
+
         balanceLabel.setText("Available Balance: $" + player.getBalance());
     } catch (Invalidbetexception | InsufficientbalanceException ex) {
         JOptionPane.showMessageDialog(this,ex.getMessage(), "Error",
                 JOptionPane.ERROR_MESSAGE
         );
 
-    } catch (NumberFormatException ex) {
-
-        JOptionPane.showMessageDialog(this,"Please enter a valid number.", "Error",
-                JOptionPane.ERROR_MESSAGE
-        );
     }
 });
 

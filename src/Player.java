@@ -16,7 +16,7 @@ public class Player {
         this.balance = balance;
     }
    public void placeBet(double betAmount) throws Invalidbetexception,InsufficientbalanceException {
-    if (betAmount <= 0) {
+    if (betAmount <= 10) {
         throw new Invalidbetexception("Minimum Bet amount is 10.");
     }
     if (betAmount > balance) {
