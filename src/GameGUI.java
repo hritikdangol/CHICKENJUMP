@@ -45,7 +45,10 @@ public class GameGUI extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 startButton.setText("Starting......");
             }
-        });
+        });;
+           startButton.addActionListener(e -> {
+               startGame();
+               });
         JPanel panel = new JPanel();
         panel.setLayout(new GridLayout(6, 1, 10, 10));
 
@@ -56,6 +59,9 @@ public class GameGUI extends JFrame {
         add(panel);
 
         setVisible(true);
+    }
+
+    private void startGame() {
     }
 
     public static void main(String[] args) {
