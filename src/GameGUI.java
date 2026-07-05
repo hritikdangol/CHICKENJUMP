@@ -30,8 +30,9 @@ public class GameGUI extends JFrame {
         player.placeBet(bet);
         JOptionPane.showMessageDialog(this,"Bet Successful!"
         );
-
         balanceLabel.setText("Available Balance: $" + player.getBalance());
+
+        //exception dinxa
     } catch (Invalidbetexception | InsufficientbalanceException ex) {
         JOptionPane.showMessageDialog(this,ex.getMessage(), "Error",
                 JOptionPane.ERROR_MESSAGE
