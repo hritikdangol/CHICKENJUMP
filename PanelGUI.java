@@ -28,7 +28,6 @@ public class PanelGUI extends JPanel {
                 if (e.getKeyCode() == java.awt.event.KeyEvent.VK_SPACE) {
 
                     game.jump();
-                    repaint();
 
                 }
 

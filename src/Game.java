@@ -65,13 +65,22 @@ if (currentPath >= paths.size()) {
         }
         Path current = paths.get(currentPath - 1);
         double won = player.getBalance() * current.getMultiplier();
-        System.out.println("You won " + won);
-    }
+           player.setBalance(player.getBalance() + won);
+    gameOver = true;
+    JOptionPane.showMessageDialog(null,
+            "You cashed out!\nWon $" + won);
+        }
     public ArrayList<Path> getPaths() {
         return paths;
     }
        public Chicken getChicken() {
     return chicken;
+}
+public Player getPlayer() {
+    return player;
+}
+public int getCurrentPath() {
+    return currentPath;
 }
 
     public boolean isGameOver() {
