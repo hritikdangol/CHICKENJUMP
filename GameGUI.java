@@ -48,30 +48,7 @@ public class GameGUI extends JFrame {
                
         JPanel panel = new JPanel();
         panel.setLayout(new GridLayout(6, 1, 10, 10));
-        class gamePanel extends JPanel {
-           public gamePanel() {
-        setBackground(Color.WHITE);
-    }
-
-    @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
-
-        // Ground
-        g.setColor(new Color(50, 180, 50));
-        g.fillRect(0, 500, getWidth(), 100);
-
-        // Chicken (temporary)
-        g.setColor(Color.YELLOW);
-        g.fillOval(100, 430, 50, 50);
-
-        g.setColor(Color.BLACK);
-        g.drawString("Chicken Game", 20, 30);
-    }
-        }
-
-
-
+        panel.setBackground(Color.WHITE);
 
         panel.add(balanceLabel);
         panel.add(betField);
