@@ -24,7 +24,7 @@ public class BetGUI extends JFrame {
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        balanceLabel = new JLabel("Available Balance: $" + player.getBalance());
+        balanceLabel = new JLabel("Available Balance: " + player.getBalance());
         betField = new JTextField();
         betButton = new JButton("Place Bet");
         startButton = new JButton("Start Game");
