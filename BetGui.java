@@ -15,9 +15,9 @@ public class BetGUI extends JFrame {
 
     private Player player;
 
-    public BetGUI() {
+    public BetGUI(Player player) {
 
-        player = new Player(1000);
+    this.player = player;
 
         setTitle("Chicken Jump");
         setSize(450,350);
@@ -64,7 +64,7 @@ public class BetGUI extends JFrame {
         dispose();     //recent  frame program gui off gardinxa//
         Chicken chicken = new Chicken(50,395,50,50);
         Game game = new Game(player,chicken);
-
+        game.startGame(); 
         new FrameGUI(game); /// naya gameframe  dinxa
 
     }

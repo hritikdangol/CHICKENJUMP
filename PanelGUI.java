@@ -1,39 +1,70 @@
 import java.awt.*;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import javax.swing.*;
 import src.Game;
 import src.Path;
 
-
 public class PanelGUI extends JPanel {
 
     private Game game;
+    private FrameGUI frame;
+
     private Image chickenImg;
     private Image fireImg;
 
-    public PanelGUI(Game game) {
+    public PanelGUI(Game game, FrameGUI frame) {
 
         this.game = game;
+        this.frame = frame;
 
+        // Load images
         chickenImg = new ImageIcon("assets/chicken.png").getImage();
         fireImg = new ImageIcon("assets/fire.png").getImage();
 
-        setBackground(new Color(135,206,235)); // Sky blue
+        // Background color
+        setBackground(new Color(135, 206, 235));
 
+        // Receive keyboard input
         setFocusable(true);
 
-        addKeyListener(new java.awt.event.KeyAdapter() {
+        // ==========================
+        // Space Bar = Jump
+        // ==========================
+        addKeyListener(new KeyAdapter() {
+
             @Override
-            public void keyPressed(java.awt.event.KeyEvent e) {
+            public void keyPressed(KeyEvent e) {
 
-                if (e.getKeyCode() == java.awt.event.KeyEvent.VK_SPACE) {
+                if (e.getKeyCode() == KeyEvent.VK_SPACE) {
 
+                    // Chicken jumps
                     game.jump();
 
-                }
+                    // Update game information
+                    frame.updateMultiplier();
+                    frame.updateBalance();
 
+                    // Redraw game
+                    repaint();
+
+                    // Game Over
+                    if (game.isGameOver()) {
+
+                        JOptionPane.showMessageDialog( PanelGUI.this,"🔥 Game Over!"
+                        );
+
+                        // Close game window
+                        SwingUtilities.getWindowAncestor(PanelGUI.this).dispose();
+
+                        // Return to betting screen
+                        new BetGUI();
+                    }
+                }
             }
         });
     }
+
     @Override
     protected void paintComponent(Graphics g) {
 
@@ -45,7 +76,9 @@ public class PanelGUI extends JPanel {
         int pathHeight = 20;
         int gap = 25;
 
-        // Draw all paths
+        // ==========================
+        // Draw Paths
+        // ==========================
         for (int i = 0; i < game.getPaths().size(); i++) {
 
             Path path = game.getPaths().get(i);
@@ -53,21 +86,33 @@ public class PanelGUI extends JPanel {
             int x = startX + i * (pathWidth + gap);
 
             // Draw path
-            g.setColor(new Color(139,69,19));
+            g.setColor(new Color(139, 69, 19));
             g.fillRect(x, startY, pathWidth, pathHeight);
 
-            // Draw fire if this path has fire
-            if (path.hasFire()) {
-                g.drawImage(fireImg,
+            // Show fire only on the path the player hit
+            if (game.isGameOver() && i == game.getFirePathIndex()) {
+
+                g.drawImage(
+                        fireImg,
                         x + 20,
                         startY - 40,
                         40,
                         40,
-                        this);
+                        this
+                );
             }
         }
 
-        // Draw chicken
-        g.drawImage(chickenImg,(int) game.getChicken().getX(), (int) game.getChicken().getY(),50,50, this);
+        // ==========================
+        // Draw Chicken
+        // ==========================
+        g.drawImage(
+                chickenImg,
+                (int) game.getChicken().getX(),
+                (int) game.getChicken().getY(),
+                50,
+                50,
+                this
+        );
     }
 }

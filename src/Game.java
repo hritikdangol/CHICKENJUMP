@@ -1,12 +1,18 @@
 package src;
+
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+
 public class Game {
+
     private Player player;
     private Chicken chicken;
     private ArrayList<Path> paths;
+
     private int currentPath;
     private boolean gameOver;
+    private int firePathIndex;
+
     public Game(Player player, Chicken chicken) {
         this.player = player;
         this.chicken = chicken;
@@ -14,76 +20,99 @@ public class Game {
         paths = new ArrayList<>();
         currentPath = 0;
         gameOver = false;
+        firePathIndex = -1;
     }
+
     public void startGame() {
+
         paths.clear();
-        for (int i = 1; i <= 15; i++) {   //total path 15 wata xa ((limited pathss))
+
+        for (int i = 1; i <= 15; i++) {
             paths.add(new Path(i));
         }
+
         currentPath = 0;
-        gameOver = false;            
-        System.out.println("Game Started!");
+        gameOver = false;
+        firePathIndex = -1;
     }
+
     public void jump() {
-    if(gameOver)
-        return;
-    currentPath++;
-    chicken.move(105);
-if (currentPath >= paths.size()) {
 
-    JOptionPane.showMessageDialog(null, " You Win!"+player.getBalance());
-    startGame();
-    chicken.setX(50);
-    chicken.setY(395);
-    currentPath = 0;
-    gameOver = false;
+        if (gameOver)
+            return;
 
-    return;
-}
+        currentPath++;
+        chicken.move(105);
 
-    Path current = paths.get(currentPath);
+        if (currentPath >= paths.size()) {
 
-    if (current.hasFire()) {
+            JOptionPane.showMessageDialog(null, " You Won!"+ getPlayer().getCurrentBet() * paths.get(paths.size() - 1).getMultiplier());
 
-    JOptionPane.showMessageDialog(null, "Game Over!");
+            startGame();
 
-    startGame();
-    chicken.setX(50);
-    chicken.setY(395);
-    currentPath = 0;
-    gameOver = false;
-    return;
-}
-}
+            chicken.setX(50);
+            chicken.setY(395);
+
+            return;
+        }
+
+        Path current = paths.get(currentPath);
+
+        if (current.hasFire()) {
+
+            firePathIndex = currentPath;
+            gameOver = true;
+        }
+    }
+
     public void cashOut() {
-        if (gameOver) {
+
+        if (gameOver)
             return;
-        }
+
         if (currentPath == 0) {
-            System.out.println("Cannot withdraw");
+
+            JOptionPane.showMessageDialog(null,
+                    "Jump at least one path");
             return;
         }
+
         Path current = paths.get(currentPath - 1);
-        double won = player.getBalance() * current.getMultiplier();
-           player.setBalance(player.getBalance() + won);
-    gameOver = true;
-    JOptionPane.showMessageDialog(null,
-            "You cashed out!\nWon $" + won);
-        }
+
+        double won = player.getCurrentBet() * current.getMultiplier();
+
+        player.setBalance(player.getBalance() + won);
+
+        JOptionPane.showMessageDialog(null,
+                "You Cashed Out!\nWon: $" + won);
+
+        startGame();
+
+        chicken.setX(50);
+        chicken.setY(395);
+    }
+
     public ArrayList<Path> getPaths() {
         return paths;
     }
-       public Chicken getChicken() {
-    return chicken;
-}
-public Player getPlayer() {
-    return player;
-}
-public int getCurrentPath() {
-    return currentPath;
-}
+
+    public Chicken getChicken() {
+        return chicken;
+    }
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    public int getCurrentPath() {
+        return currentPath;
+    }
 
     public boolean isGameOver() {
         return gameOver;
+    }
+
+    public int getFirePathIndex() {
+        return firePathIndex;
     }
 }
