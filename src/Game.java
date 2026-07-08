@@ -60,6 +60,10 @@ public class Game {
     public ArrayList<Path> getPaths() {
         return paths;
     }
+       public Chicken getChicken() {
+    return chicken;
+}
+
     public boolean isGameOver() {
         return gameOver;
     }
