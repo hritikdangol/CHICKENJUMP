@@ -45,9 +45,10 @@ public class PanelGUI extends JPanel {
             }
         });
     }
+
+
     @Override
     protected void paintComponent(Graphics g) {
-
         super.paintComponent(g);
 
         int startX = 50;
@@ -66,12 +67,11 @@ public class PanelGUI extends JPanel {
             // Show fire only on the path the player hit
             if (game.isGameOver() && i == game.getFirePathIndex()) {
 
-                g.drawImage(fireImg,x + 20,startY - 40,70,70,this);
+                g.drawImage(fireImg,x + 30,startY - 60,70,70,this);
             }
         }
 
         g.drawImage(
-                chickenImg,(int) game.getChicken().getX(),(int) game.getChicken().getY(), 50,50,this
-        );
-    }
+                chickenImg,(int) game.getChicken().getX(),(int) game.getChicken().getY(), 50,50,this);
+    } 
 }
