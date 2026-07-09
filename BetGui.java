@@ -24,12 +24,13 @@ public class BetGUI extends JFrame {
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        balanceLabel = new JLabel("Available Balance:  " + player.getBalance());
+        balanceLabel = new JLabel("Available Balance: " + player.getBalance());
         betField = new JTextField();
         betButton = new JButton("Place Bet");
         startButton = new JButton("Start Game");
-        betButton.addActionListener(e -> placeBet());
 
+
+        betButton.addActionListener(e -> placeBet());
         startButton.addActionListener(e -> startGame());
 
         JPanel panel = new JPanel(new GridLayout(6,1,10,10));
