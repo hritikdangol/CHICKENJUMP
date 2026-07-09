@@ -49,7 +49,7 @@ public class FrameGUI extends JFrame {
 
         setLayout(new BorderLayout());
 
-        add(panel, BorderLayout.CENTER);
+        add(panel, BorderLayout.CENTER); // windows ko boottom ma fix gana ko lagi
         add(bottom, BorderLayout.SOUTH);
 
         setVisible(true);

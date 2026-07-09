@@ -6,7 +6,6 @@ import src.Game;
 import src.Path;
 
 public class PanelGUI extends JPanel {
-
     private Game game;
     private FrameGUI frame;
 
@@ -38,19 +37,14 @@ public class PanelGUI extends JPanel {
                     frame.updateBalance();
                     repaint(); // game sakesi feri suru garna lai
                     if (game.isGameOver()) {
-
-                        JOptionPane.showMessageDialog( PanelGUI.this,"Game Over!"
-                        );
-
-                        // Close game window
-                        SwingUtilities.getWindowAncestor(PanelGUI.this).dispose();
+                        JOptionPane.showMessageDialog( PanelGUI.this,"Game Over!");
+                        SwingUtilities.getWindowAncestor(PanelGUI.this).dispose();    // Close game window
                        new BetGUI(game.getPlayer());
                     }
                 }
             }
         });
     }
-
     @Override
     protected void paintComponent(Graphics g) {
 
@@ -63,11 +57,8 @@ public class PanelGUI extends JPanel {
         int gap = 25;
 
         for (int i = 0; i < game.getPaths().size(); i++) {
-
             Path path = game.getPaths().get(i);
-
             int x = startX + i * (pathWidth + gap);
-
             // Draw path
             g.setColor(new Color(139, 69, 19));
             g.fillRect(x, startY, pathWidth, pathHeight);
@@ -75,8 +66,7 @@ public class PanelGUI extends JPanel {
             // Show fire only on the path the player hit
             if (game.isGameOver() && i == game.getFirePathIndex()) {
 
-                g.drawImage(fireImg,x + 20,startY - 40,70,70,this
-                );
+                g.drawImage(fireImg,x + 20,startY - 40,70,70,this);
             }
         }
 
