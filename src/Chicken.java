@@ -1,16 +1,20 @@
 package src;
 public class Chicken {
     private double x, y, width, height;
+    private double velocityY;
     private boolean isJumping;
     public Chicken(double x, double y, double width, double height) {
         this.x = x;
         this.y = y;
         this.width = width;
         this.height = height;
+        this.velocityY = 0;
         this.isJumping = false;
     }
     public void jump() {
         if ( isJumping == true) {
+            velocityY = -10; // Set the initial jump velocity
+            isJumping = false; // Reset the jumping state
             System.out.println("Jumped");
         }
     }

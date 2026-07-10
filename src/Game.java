@@ -1,5 +1,4 @@
 package src;
-
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -8,7 +7,6 @@ public class Game {
     private Player player;
     private Chicken chicken;
     private ArrayList<Path> paths;  //multiple paths ko lagi arraylist banako
-
     private int currentPath;
     private boolean gameOver;
     private int firePathIndex;
@@ -16,13 +14,11 @@ public class Game {
     public Game(Player player, Chicken chicken) {
         this.player = player;
         this.chicken = chicken;
-
         paths = new ArrayList<>();
         currentPath = 0;
         gameOver = false;
         firePathIndex = -1;
     }
-
     public void startGame() {
 
         paths.clear(); //path clear garxa
@@ -36,7 +32,6 @@ public class Game {
     }
 
     public void jump() {
-
         if (gameOver)
             return;
         currentPath++;
@@ -45,10 +40,13 @@ public class Game {
         if (currentPath >= paths.size()) {
 
             JOptionPane.showMessageDialog(null, " You Won!"+ getPlayer().getCurrentBet() * paths.get(paths.size() - 1).getMultiplier());
+<<<<<<< HEAD
 
             startGame();
             chicken.setX(50);
             chicken.setY(395);
+=======
+>>>>>>> e5a4b26be630feb12fbc3d102f89b7e3cf5d79d3
             return;
         }
 
@@ -80,7 +78,6 @@ public class Game {
         JOptionPane.showMessageDialog(null, "YouWon: " + won);
 
         startGame();
-
         chicken.setX(50);
         chicken.setY(395);
     }
@@ -104,7 +101,6 @@ public class Game {
     public boolean isGameOver() {
         return gameOver;
     }
-
     public int getFirePathIndex() {
         return firePathIndex;
     }
