@@ -39,14 +39,10 @@ public class Game {
 
         if (currentPath >= paths.size()) {
 
-            JOptionPane.showMessageDialog(null, " You Won!"+ getPlayer().getCurrentBet() * paths.get(paths.size() - 1).getMultiplier());
-<<<<<<< HEAD
-
+JOptionPane.showMessageDialog(null, " You Won!"+ getPlayer().getCurrentBet() * paths.get(paths.size() - 1).getMultiplier());
             startGame();
             chicken.setX(50);
             chicken.setY(395);
-=======
->>>>>>> e5a4b26be630feb12fbc3d102f89b7e3cf5d79d3
             return;
         }
 

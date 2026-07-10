@@ -14,7 +14,7 @@ public class Chicken {
     public void jump() {
         if ( isJumping == true) {
             velocityY = -10; // Set the initial jump velocity
-            isJumping = false; // Reset the jumping state
+            isJumping = true;
             System.out.println("Jumped");
         }
     }
@@ -28,7 +28,7 @@ public class Chicken {
 public void setY(double y) {
     this.y = y;
 }
-    public double getX() {
+    public double getX() { 
         return x;
     }
     public double getY() {
