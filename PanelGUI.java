@@ -79,7 +79,6 @@ public class PanelGUI extends JPanel {
                 );
             }
         }
-
         g.drawImage(
                 chickenImg,(int) game.getChicken().getX(),(int) game.getChicken().getY(), 50,50,this
         );

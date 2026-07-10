@@ -13,10 +13,19 @@ public class Path {
     public int getPathNum() {
         return pathNum;
     }
+    public void setPathNum(int pathNum) {
+        this.pathNum = pathNum;
+    }
     public double getMultiplier() {
         return multiplier;
     }
+    public void setMultiplier(double multiplier) {
+        this.multiplier = multiplier;
+    }
     public boolean hasFire() {
+        return fire;
+    }
+    public boolean getFire() {
         return fire;
     }
     public void setFire(boolean fire) {

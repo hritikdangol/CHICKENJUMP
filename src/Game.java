@@ -25,8 +25,7 @@ public class Game {
 
     public void startGame() {
 
-        paths.clear();
-
+        paths.clear(); //path clear garxa
         for (int i = 1; i <= 15; i++) {   //15 wata path
             paths.add(new Path(i));
         }
@@ -40,7 +39,6 @@ public class Game {
 
         if (gameOver)
             return;
-
         currentPath++;
         chicken.move(105);
 
@@ -49,10 +47,8 @@ public class Game {
             JOptionPane.showMessageDialog(null, " You Won!"+ getPlayer().getCurrentBet() * paths.get(paths.size() - 1).getMultiplier());
 
             startGame();
-
             chicken.setX(50);
             chicken.setY(395);
-
             return;
         }
 
@@ -60,7 +56,7 @@ public class Game {
 
         if (current.hasFire()) {
 
-            firePathIndex = currentPath;
+            firePathIndex = currentPath;//0-15
             gameOver = true;
         }
     }
@@ -71,8 +67,7 @@ public class Game {
             return;
 
         if (currentPath == 0) {
-            JOptionPane.showMessageDialog(null,
-                    "Jump at least one path");
+            JOptionPane.showMessageDialog(null,"Jump at least one path");
             return;
         }
 
