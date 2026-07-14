@@ -34,6 +34,7 @@ public class Game {
     public void jump() {
         if (gameOver)
             return;
+        chicken.jump();
         currentPath++;
         chicken.move(105);
 
