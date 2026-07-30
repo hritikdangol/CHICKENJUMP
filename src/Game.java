@@ -34,6 +34,7 @@ public class Game {
     public void jump() {
         if (gameOver)
             return;
+        chicken.jump();
         currentPath++;
         chicken.move(125);
 
@@ -49,7 +50,7 @@ JOptionPane.showMessageDialog(null, " You Won!"+ getPlayer().getCurrentBet() * p
         Path current = paths.get(currentPath);
 
         if (current.hasFire()) {
-
+            System.out.println("Game over");
             firePathIndex = currentPath;//0-15
             gameOver = true;
         }

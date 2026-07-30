@@ -12,10 +12,10 @@ public class Chicken {
         this.isJumping = false;
     }
     public void jump() {
-        if ( isJumping == true) {
-            velocityY = -10; // Set the initial jump velocity
-            isJumping = true;
-            System.out.println("Jumped");
+         if (!isJumping) {
+        velocityY = -10;
+        isJumping = true;
+        System.out.println("Jumped");
         }
     }
     public void move(double distance) {
