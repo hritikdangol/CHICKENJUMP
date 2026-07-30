@@ -21,20 +21,21 @@ public class Player {
         this.balance = balance;
     }
    public void placeBet(double betAmount) throws Invalidbetexception,InsufficientbalanceException,InvalidstartGameException {
-    if (betAmount <= 10) {
+    if (betAmount < 10) {
         throw new Invalidbetexception("Minimum Bet amount is 10.");
     }
     if (betAmount > balance) {
-        throw new Invalidbetexception("Insufficient balance.");
+        throw new InsufficientbalanceException("Insufficient balance.");
     }
   
     currentBet = betAmount;
     balance -= betAmount;
     System.out.println("Bet placed: " + betAmount);
 }
-      public void startGame() throws InvalidstartGameException {
-        if (currentBet<=10 && startGame==false) {
-            throw new InvalidstartGameException("Place a bet before starting the game.");
-        }
+    public void startGame() throws InvalidstartGameException {
+    if (currentBet == null || currentBet <= 0) {
+        throw new InvalidstartGameException("Place a bet before starting the game.");
+    }
+    startGame = true;
 }
 }

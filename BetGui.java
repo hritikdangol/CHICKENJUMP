@@ -62,21 +62,19 @@ public class BetGUI extends JFrame {
         }
 
     }
-    private void startGame(){
-        try {
-            double bet = Double.parseDouble(betField.getText());
-            player.startGame();
-            startButton.setEnabled(false);
-            Chicken chicken = new Chicken(50,395,50,50);
-            Game game = new Game(player,chicken);
-            game.startGame();
-            dispose();     //recent  frame program gui off gardinxa//
-            new FrameGUI(game); /// naya gameframe  dinxa
-        }
-        catch (InvalidstartGameException ex) {
-            JOptionPane.showMessageDialog(this,"" + ex.getMessage());
-            startButton.setEnabled(true);
-        }
+    private void startGame() {
+    try {
+        System.out.println(player.getCurrentBet());
+        player.startGame();
+        Chicken chicken = new Chicken(50, 395, 50, 50);
+        Game game = new Game(player, chicken);
+        game.startGame();
+        dispose();
+        new FrameGUI(game);
+
+    } catch (InvalidstartGameException ex) {
+        JOptionPane.showMessageDialog(this, ex.getMessage());
     }
+}
 
 }
