@@ -35,7 +35,7 @@ public class Game {
         if (gameOver)
             return;
         currentPath++;
-        chicken.move(105);
+        chicken.move(125);
 
         if (currentPath >= paths.size()) {
 

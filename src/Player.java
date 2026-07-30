@@ -1,13 +1,15 @@
 package src;
 public class Player {
     private double balance=0;
-    private double currentBet;
+    private Double currentBet=null;
+    //double doesnt holds nullvalue so we use Double class which can hold null value
+    private boolean startGame=false;
     public Player() {
         this(0);
     }
     public Player(double balance) {
         this.balance = balance;
-        this.currentBet = 0;
+        this.currentBet =0.00;
     }
     public double getBalance() {
         return balance;
@@ -18,15 +20,21 @@ public class Player {
     public void setBalance(double balance) {
         this.balance = balance;
     }
-   public void placeBet(double betAmount) throws Invalidbetexception,InsufficientbalanceException {
+   public void placeBet(double betAmount) throws Invalidbetexception,InsufficientbalanceException,InvalidstartGameException {
     if (betAmount <= 10) {
         throw new Invalidbetexception("Minimum Bet amount is 10.");
     }
     if (betAmount > balance) {
         throw new Invalidbetexception("Insufficient balance.");
     }
+  
     currentBet = betAmount;
     balance -= betAmount;
     System.out.println("Bet placed: " + betAmount);
+}
+      public void startGame() throws InvalidstartGameException {
+        if (currentBet<=10 && startGame==false) {
+            throw new InvalidstartGameException("Place a bet before starting the game.");
+        }
 }
 }

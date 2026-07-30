@@ -4,6 +4,7 @@ import src.Chicken;
 import src.Game;
 import src.InsufficientbalanceException;
 import src.Invalidbetexception;
+import src.InvalidstartGameException;
 import src.Player;
 
 public class BetGUI extends JFrame {
@@ -48,27 +49,34 @@ public class BetGUI extends JFrame {
         try {
             double bet = Double.parseDouble(betField.getText());
             player.placeBet(bet);
-            balanceLabel.setText("Available Balance: $" + player.getBalance());
+            balanceLabel.setText("Available Balance: " + player.getBalance());
             JOptionPane.showMessageDialog(this,"Bet Successful!");
         }
         catch(NumberFormatException ex){
             JOptionPane.showMessageDialog(this,"Enter a valid number.");
 
         }
-        catch(Invalidbetexception | InsufficientbalanceException ex){
+        catch(Invalidbetexception | InsufficientbalanceException| InvalidstartGameException ex){
             JOptionPane.showMessageDialog(this,ex.getMessage());
 
         }
 
     }
     private void startGame(){
-
-        dispose();     //recent  frame program gui off gardinxa//
-        Chicken chicken = new Chicken(50,395,50,50);
-        Game game = new Game(player,chicken);
-        game.startGame(); 
-        new FrameGUI(game); /// naya gameframe  dinxa
-
+        try {
+            double bet = Double.parseDouble(betField.getText());
+            player.startGame();
+            startButton.setEnabled(false);
+            Chicken chicken = new Chicken(50,395,50,50);
+            Game game = new Game(player,chicken);
+            game.startGame();
+            dispose();     //recent  frame program gui off gardinxa//
+            new FrameGUI(game); /// naya gameframe  dinxa
+        }
+        catch (InvalidstartGameException ex) {
+            JOptionPane.showMessageDialog(this,"" + ex.getMessage());
+            startButton.setEnabled(true);
+        }
     }
 
 }
