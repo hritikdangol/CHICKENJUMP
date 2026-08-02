@@ -5,11 +5,11 @@ public class Path {
     private double multiplier;
     private boolean fire;
     private static Random random = new Random();   //random fire generate garxa path hauruma
-    private int TotalPaths = 15;
+    private int TotalPaths = 25;
     public Path(int pathNum) {
         this.pathNum = pathNum;
         this.multiplier = 1.0 + (pathNum * 1.25);
-        this.fire = random.nextBoolean();        //fire xa ki xaina random generate garxa
+       this.fire = random.nextInt(100) < 30;        //fire xa ki xaina random generate garxa ra 30 % chane hunhac harek pathma
     }
     public int getPathNum() {
         return pathNum;

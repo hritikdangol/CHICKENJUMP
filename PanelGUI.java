@@ -4,6 +4,8 @@ import java.awt.event.KeyEvent;
 import javax.swing.*;
 import src.Game;
 import src.Path;
+import javax.sound.sampled.*;//sound ko lagi
+import java.io.File;
 
 public class PanelGUI extends JPanel {
     private Game game;
@@ -18,6 +20,7 @@ public class PanelGUI extends JPanel {
         this.frame = frame;
         chickenImg = new ImageIcon("assets/chicken.png").getImage();
         fireImg = new ImageIcon("assets/fire.png").getImage();
+        playBackgroundMusic();
 
         // Background color
         setBackground(new Color(135, 206, 235));
@@ -32,20 +35,72 @@ public class PanelGUI extends JPanel {
 
                 if (e.getKeyCode() == KeyEvent.VK_SPACE) { // spacebar====jump ko lagi
 
-                    game.jump();
+                    if (!game.isStarted()) {
+                         return;
+                        }
+                        game.jump();
+
                     frame.updateMultiplier();
                     frame.updateBalance();
                     repaint(); // game sakesi feri suru garna lai
-                    if (game.isGameOver()) {
-                        JOptionPane.showMessageDialog( PanelGUI.this,"Game Over!");
-                        SwingUtilities.getWindowAncestor(PanelGUI.this).dispose();    // Close game window
-                       new BetGUI(game.getPlayer());
-                    }
+if (game.isGameOver()) {
+playSound("assets/deadchickesound.wav");
+    JOptionPane.showMessageDialog(frame, "Game Over!");
+
+    // Reset chicken only
+    game.getChicken().setX(50);
+    game.getChicken().setY(395);
+    game.resetDisplay();
+    frame.updateBalance();
+    frame.updateMultiplier();
+    frame.resetBetUI();
+
+    repaint();
+}
                 }
             }
         });
-    }
+    }private void playSound(String fileName) {
+    try {
+        File file = new File(fileName);
 
+        AudioInputStream audioStream =
+                AudioSystem.getAudioInputStream(file);
+
+        Clip clip = AudioSystem.getClip();
+
+        clip.open(audioStream);
+
+        System.out.println("Playing: " + fileName);
+
+        clip.start();
+
+    } catch (Exception e) {
+        e.printStackTrace();   // IMPORTANT
+    }
+}private void playBackgroundMusic() {
+
+    try {
+
+        System.out.println("Background music started");
+
+        File file = new File("assets/bgsound.wav");
+
+        AudioInputStream audio =
+                AudioSystem.getAudioInputStream(file);
+
+        Clip clip = AudioSystem.getClip();
+
+        clip.open(audio);
+
+        clip.loop(Clip.LOOP_CONTINUOUSLY);
+
+        clip.start();
+
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+}
 
     @Override
     protected void paintComponent(Graphics g) {

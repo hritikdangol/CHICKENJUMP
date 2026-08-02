@@ -10,26 +10,32 @@ public class Game {
     private int currentPath;
     private boolean gameOver;
     private int firePathIndex;
+private boolean started = false;
 
     public Game(Player player, Chicken chicken) {
         this.player = player;
         this.chicken = chicken;
         paths = new ArrayList<>();
+        initializePaths();
         currentPath = 0;
         gameOver = false;
         firePathIndex = -1;
     }
-    public void startGame() {
+  public void startGame() {
 
-        paths.clear(); //path clear garxa
-        for (int i = 1; i <= 15; i++) {   //15 wata path
-            paths.add(new Path(i));
-        }
+    paths.clear();
 
-        currentPath = 0;
-        gameOver = false;
-        firePathIndex = -1;// path jump garepaxi decrease huncha i.e first path gayo vaney 14 path baki huncha and so on
+    for (int i = 1; i <= 25; i++) {
+        paths.add(new Path(i));
     }
+
+    currentPath = 0;
+
+    gameOver = false;      // Reset game over
+
+    firePathIndex = -1;    // Remove old fire
+    started = true;
+}
 
     public void jump() {
         if (gameOver)
@@ -37,15 +43,24 @@ public class Game {
         chicken.jump();
         currentPath++;
         chicken.move(125);
+// Player wins but game does NOT restart automatically
+if (currentPath >= paths.size()) {
 
-        if (currentPath >= paths.size()) {
+    double won = getPlayer().getCurrentBet()
+            * paths.get(paths.size() - 1).getMultiplier();
 
-JOptionPane.showMessageDialog(null, " You Won!"+ getPlayer().getCurrentBet() * paths.get(paths.size() - 1).getMultiplier());
-            startGame();
-            chicken.setX(50);
-            chicken.setY(395);
-            return;
-        }
+    player.setBalance(player.getBalance() + won);
+
+    JOptionPane.showMessageDialog(null,
+            "You Won! Amount: $" + won);
+
+    // Stop current game
+    gameOver = true;
+    started = false;
+    player.resetBet();
+
+    return;
+}
 
         Path current = paths.get(currentPath);
 
@@ -53,6 +68,7 @@ JOptionPane.showMessageDialog(null, " You Won!"+ getPlayer().getCurrentBet() * p
             System.out.println("Game over");
             firePathIndex = currentPath;//0-15
             gameOver = true;
+            started = false;
         }
     }
 
@@ -74,10 +90,24 @@ JOptionPane.showMessageDialog(null, " You Won!"+ getPlayer().getCurrentBet() * p
 
         JOptionPane.showMessageDialog(null, "YouWon: " + won);
 
-        startGame();
-        chicken.setX(50);
-        chicken.setY(395);
+      gameOver = true;
+      started = false;
+      player.resetBet();
     }
+//game suru huna bittikai paths create garna lai
+public void initializePaths() {
+
+    paths.clear();
+
+    for (int i = 1; i <= 25; i++) {
+        paths.add(new Path(i));
+    }
+
+    currentPath = 0;
+    gameOver = false;
+    firePathIndex = -1;
+    started = false; //game nachalunako lagi till astartgame button click garxa
+}
 
     public ArrayList<Path> getPaths() {
         return paths;
@@ -101,4 +131,11 @@ JOptionPane.showMessageDialog(null, " You Won!"+ getPlayer().getCurrentBet() * p
     public int getFirePathIndex() {
         return firePathIndex;
     }
+    public boolean isStarted() {
+    return started;
+}
+public void resetDisplay() {
+    gameOver = false;
+    firePathIndex = -1;
+}
 }

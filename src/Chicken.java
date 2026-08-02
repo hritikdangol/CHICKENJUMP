@@ -18,6 +18,7 @@ public class Chicken {
         System.out.println("Jumped");
         }
     }
+    
     public void move(double distance) {
         this.x += distance;
     }
@@ -37,5 +38,6 @@ public void setY(double y) {
     public boolean isJumping() {
         return isJumping;
     }
+    
 
     }
