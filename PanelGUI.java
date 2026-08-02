@@ -36,71 +36,73 @@ public class PanelGUI extends JPanel {
                 if (e.getKeyCode() == KeyEvent.VK_SPACE) { // spacebar====jump ko lagi
 
                     if (!game.isStarted()) {
-                         return;
-                        }
-                        game.jump();
+                        return;
+                    }
+                    game.jump();
 
                     frame.updateMultiplier();
                     frame.updateBalance();
                     repaint(); // game sakesi feri suru garna lai
-if (game.isGameOver()) {
-playSound("assets/deadchickesound.wav");
-    JOptionPane.showMessageDialog(frame, "Game Over!");
+                    if (game.isGameOver()) {
+                        playSound("assets/deadchickesound.wav");
+                        JOptionPane.showMessageDialog(frame, "Game Over!");
 
-    // Reset chicken only
-    game.getChicken().setX(50);
-    game.getChicken().setY(395);
-    game.resetDisplay();
-    frame.updateBalance();
-    frame.updateMultiplier();
-    frame.resetBetUI();
+                        // Reset chicken only
+                        game.getChicken().setX(50);
+                        game.getChicken().setY(395);
+                        game.resetDisplay();
+                        frame.updateBalance();
+                        frame.updateMultiplier();
+                        frame.resetBetUI();
 
-    repaint();
-}
+                        repaint();
+                    }
                 }
             }
         });
-    }private void playSound(String fileName) {
-    try {
-        File file = new File(fileName);
-
-        AudioInputStream audioStream =
-                AudioSystem.getAudioInputStream(file);
-
-        Clip clip = AudioSystem.getClip();
-
-        clip.open(audioStream);
-
-        System.out.println("Playing: " + fileName);
-
-        clip.start();
-
-    } catch (Exception e) {
-        e.printStackTrace();   // IMPORTANT
     }
-}private void playBackgroundMusic() {
 
-    try {
+    private void playSound(String fileName) {
+        try {
+            File file = new File(fileName);
 
-        System.out.println("Background music started");
+            AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
 
-        File file = new File("assets/bgsound.wav");
+            Clip clip = AudioSystem.getClip();
 
-        AudioInputStream audio =
-                AudioSystem.getAudioInputStream(file);
+            clip.open(audioStream);
 
-        Clip clip = AudioSystem.getClip();
+            System.out.println("Playing: " + fileName);
 
-        clip.open(audio);
+            clip.start();
 
-        clip.loop(Clip.LOOP_CONTINUOUSLY);
-
-        clip.start();
-
-    } catch (Exception e) {
-        e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace(); // IMPORTANT
+        }
     }
-}
+
+    private void playBackgroundMusic() {
+
+        try {
+
+            System.out.println("Background music started");
+
+            File file = new File("assets/bgsound.wav");
+
+            AudioInputStream audio = AudioSystem.getAudioInputStream(file);
+
+            Clip clip = AudioSystem.getClip();
+
+            clip.open(audio);
+
+            clip.loop(Clip.LOOP_CONTINUOUSLY);
+
+            clip.start();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     @Override
     protected void paintComponent(Graphics g) {
@@ -122,11 +124,11 @@ playSound("assets/deadchickesound.wav");
             // Show fire only on the when the player hit
             if (game.isGameOver() && i == game.getFirePathIndex()) {
 
-                g.drawImage(fireImg,x,startY-70,100,70,this);
+                g.drawImage(fireImg, x, startY - 70, 100, 70, this);
             }
         }
         g.drawImage(
-                chickenImg,(int) game.getChicken().getX(),(int) game.getChicken().getY(), 150,65,this);
-    } 
+                chickenImg, (int) game.getChicken().getX(), (int) game.getChicken().getY(), 150, 65, this);
+    }
 
 }

@@ -32,39 +32,38 @@ public class FrameGUI extends JFrame {
         betButton.addActionListener(e -> placeBet());
         startButton.addActionListener(e -> startGame());
 
-
         betLabel = new JLabel("Bet: " + game.getPlayer().getCurrentBet());
         multiplierLabel = new JLabel("Multiplier: x1.00");
 
         cashOutButton = new JButton("Cash Out");
         cashOutButton.setFocusable(false); // Prevent Space bar from clicking button
 
-   cashOutButton.addActionListener(e -> {
+        cashOutButton.addActionListener(e -> {
 
-    game.cashOut();
+            game.cashOut();
 
-    game.getChicken().setX(50);
-    game.getChicken().setY(395);
-    panel.repaint();
-game.resetDisplay();
-    updateBalance();
-    updateMultiplier();
-        betLabel.setText("Bet: 0.0");
-    betField.setText("");
+            game.getChicken().setX(50);
+            game.getChicken().setY(395);
+            panel.repaint();
+            game.resetDisplay();
+            updateBalance();
+            updateMultiplier();
+            betLabel.setText("Bet: 0.0");
+            betField.setText("");
 
-    panel.requestFocusInWindow();
-});
+            panel.requestFocusInWindow();
+        });
         JPanel bottom = new JPanel();
 
         bottom.add(balanceLabel);
 
-bottom.add(new JLabel("Bet"));
-bottom.add(betField);
-bottom.add(betButton);
-bottom.add(startButton);
-bottom.add(betLabel);
-bottom.add(multiplierLabel);
-bottom.add(cashOutButton);
+        bottom.add(new JLabel("Bet"));
+        bottom.add(betField);
+        bottom.add(betButton);
+        bottom.add(startButton);
+        bottom.add(betLabel);
+        bottom.add(multiplierLabel);
+        bottom.add(cashOutButton);
         panel = new PanelGUI(game, this);
         panel.repaint();
         setLayout(new BorderLayout());
@@ -78,7 +77,6 @@ bottom.add(cashOutButton);
         SwingUtilities.invokeLater(() -> panel.requestFocusInWindow());
     }
 
-
     public void updateBalance() {
         balanceLabel.setText("Balance: $" + game.getPlayer().getBalance());
     }
@@ -90,69 +88,68 @@ bottom.add(cashOutButton);
             return;
         }
 
-        double multiplier =game.getPaths() .get(game.getCurrentPath() - 1) .getMultiplier();
+        double multiplier = game.getPaths().get(game.getCurrentPath() - 1).getMultiplier();
 
         multiplierLabel.setText("Multiplier: x" + multiplier);
     }
 
     public void resetBetUI() {
-    betLabel.setText("Bet: 0.0");
-    betField.setText("");
-}
-// Place Bet button
-private void placeBet() {
-
-    try {
-
-        double bet = Double.parseDouble(betField.getText());
-
-        game.getPlayer().placeBet(bet);
-
-        updateBalance();
-
-        betLabel.setText("Bet: " + game.getPlayer().getCurrentBet());
-
-        JOptionPane.showMessageDialog(this, "Bet Successful!");
-
-    }
-    catch (NumberFormatException ex) {
-
-        JOptionPane.showMessageDialog(this, "Enter a valid number.");
-
-    }
-    catch (Invalidbetexception | InsufficientbalanceException | InvalidstartGameException ex) {
-
-        JOptionPane.showMessageDialog(this, ex.getMessage());
-
+        betLabel.setText("Bet: 0.0");
+        betField.setText("");
     }
 
-}
+    // Place Bet button
+    private void placeBet() {
 
-// Start Game button
-private void startGame() {
+        try {
 
-    try {
+            double bet = Double.parseDouble(betField.getText());
 
-        game.getPlayer().startGame();
+            game.getPlayer().placeBet(bet);
 
-        // Reset game for a new round
-        game.initializePaths();   // or game.resetGame() if that's your method
+            updateBalance();
 
-        game.getChicken().setX(50);
-        game.getChicken().setY(395);
+            betLabel.setText("Bet: " + game.getPlayer().getCurrentBet());
 
-        // Allow playing again
-        game.startGame();
+            JOptionPane.showMessageDialog(this, "Bet Successful!");
 
-        panel.repaint();
+        } catch (NumberFormatException ex) {
 
-        updateBalance();
-        updateMultiplier();
+            JOptionPane.showMessageDialog(this, "Enter a valid number.");
 
-        panel.requestFocusInWindow();
+        } catch (Invalidbetexception | InsufficientbalanceException | InvalidstartGameException ex) {
 
-    } catch (InvalidstartGameException ex) {
-        JOptionPane.showMessageDialog(this, ex.getMessage());
+            JOptionPane.showMessageDialog(this, ex.getMessage());
+
+        }
+
     }
-}
+
+    // Start Game button
+    private void startGame() {
+
+        try {
+
+            game.getPlayer().startGame();
+
+            // Reset game for a new round
+            game.initializePaths(); // or game.resetGame() if that's your method
+
+            game.getChicken().setX(50);
+            game.getChicken().setY(395);
+
+            // Allow playing again
+            game.startGame();
+
+            panel.repaint();
+
+            updateBalance();
+            updateMultiplier();
+
+            panel.requestFocusInWindow();
+
+        } catch (InvalidstartGameException ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage());
+        }
+    }
 }
