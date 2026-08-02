@@ -92,8 +92,7 @@ public class FrameGUI extends JFrame {
 
         multiplierLabel.setText("Multiplier: x" + multiplier);
     }
-
-    public void resetBetUI() {
+     public void resetBetUI() {
         betLabel.setText("Bet: 0.0");
         betField.setText("");
     }
