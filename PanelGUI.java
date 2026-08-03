@@ -127,11 +127,8 @@ public class PanelGUI extends JPanel {
 
         // Draw the chicken ONLY ONCE
         if (game.isGameOver()) {
-          g.drawImage(chickenDeadImg,
-    (int) game.getChicken().getX(),
-    chickenY,
-    100, 80, this);
-        } else {
+          g.drawImage(chickenDeadImg,(int) game.getChicken().getX(),chickenY,100, 80, this);}
+     else {
     g.drawImage(chickenImg,
     (int) game.getChicken().getX(),
     chickenY,100, 80, this);
