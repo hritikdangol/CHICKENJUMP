@@ -45,7 +45,7 @@ public class Game {
         chicken.jump();
         currentPath++;
 
-int startX = 70;
+int startX = 10;   //juump gap
 int pathWidth = 100;
 int gap = 30;
 

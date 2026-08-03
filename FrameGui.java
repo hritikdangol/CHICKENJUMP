@@ -42,7 +42,7 @@ public class FrameGUI extends JFrame {
 
             game.cashOut();
 
-            game.getChicken().setX(70);
+            game.getChicken().setX(10);
             game.getChicken().setY(620);
             panel.repaint();
             game.resetDisplay();
@@ -134,7 +134,7 @@ public class FrameGUI extends JFrame {
             // Reset game for a new round
             
             game.initializePaths(); 
-            game.getChicken().setX(70);
+            game.getChicken().setX(10);
             game.getChicken().setY(620);
 
             // Allow playing again

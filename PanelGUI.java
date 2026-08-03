@@ -13,6 +13,7 @@ public class PanelGUI extends JPanel {
 
     private Image chickenImg;
     private Image chickenDeadImg;
+    private Image backgroundImg;
 
     public PanelGUI(Game game, FrameGUI frame) {
 
@@ -20,10 +21,8 @@ public class PanelGUI extends JPanel {
         this.frame = frame;
         chickenImg = new ImageIcon("assets/chicken.png").getImage();
         chickenDeadImg = new ImageIcon("assets/chickendead.png").getImage();
+        backgroundImg = new ImageIcon("assets/background.png").getImage();
         playBackgroundMusic();
-
-        // Background color
-        setBackground(new Color(135, 206, 235));
 
         // keyboard inout ko lagi
         setFocusable(true);
@@ -50,7 +49,7 @@ public class PanelGUI extends JPanel {
                         JOptionPane.showMessageDialog(frame, "Game Over!");
 
                         // Reset chicken only
-                        game.getChicken().setX(70);
+                        game.getChicken().setX(10);
                         game.getChicken().setY(620);
                         game.resetDisplay();
                         frame.updateBalance();
@@ -109,8 +108,9 @@ public class PanelGUI extends JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
+        g.drawImage(backgroundImg, 0, 0, getWidth(), getHeight(), this);//background image
 
-        int startX = 70;
+        int startX = 10;
         int startY = 620;
         int chickenY = startY - 80;
         int pathWidth = 100;
@@ -134,8 +134,7 @@ public class PanelGUI extends JPanel {
         } else {
     g.drawImage(chickenImg,
     (int) game.getChicken().getX(),
-    chickenY,
-    100, 80, this);
+    chickenY,100, 80, this);
         }
     }
 }
