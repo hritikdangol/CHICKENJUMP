@@ -2,9 +2,9 @@ import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.io.File;
-import javax.sound.sampled.*;
+import javax.sound.sampled.*; //sound ko lagi
 import javax.swing.*;
-import src.Game;//sound ko lagi
+import src.Game;
 
 public class PanelGUI extends JPanel {
     private Game game;
@@ -77,7 +77,7 @@ public class PanelGUI extends JPanel {
             clip.start();
 
         } catch (Exception e) {
-            e.printStackTrace(); // IMPORTANT
+            e.printStackTrace(); 
         }
     }
 
@@ -110,7 +110,7 @@ public class PanelGUI extends JPanel {
         g.drawImage(backgroundImg, 0, 0, getWidth(), getHeight(), this);// background image
 
         int startX = 40;
-        int startY = 590;
+        int startY = 550;
         int chickenY = startY - 80;
         int pathWidth = 100;
         int pathHeight = 20;
