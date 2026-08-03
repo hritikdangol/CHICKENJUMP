@@ -27,7 +27,7 @@ public class Game {
 
         paths.clear();
 
-        for (int i = 1; i <= 25; i++) {
+        for (int i = 1; i <= 10; i++) {
             paths.add(new Path(i));
         }
 
@@ -73,7 +73,7 @@ chicken.setX(startX + currentPath * (pathWidth + gap));
        if (current.hasFire()) {
     System.out.println("Game over");
 
-    firePathIndex = currentPath;//0-25
+    firePathIndex = currentPath;//0-10
     gameOver = true;
     started = false;
 
@@ -109,7 +109,7 @@ chicken.setX(startX + currentPath * (pathWidth + gap));
 
         paths.clear();
 
-        for (int i = 1; i <= 25; i++) {
+        for (int i = 1; i <= 10; i++) {
             paths.add(new Path(i));
         }
 

@@ -7,7 +7,7 @@ public class Path {
     private double multiplier;
     private boolean fire;
     private static Random random = new Random(); // random fire generate garxa path hauruma
-    private int TotalPaths = 25;
+    private int TotalPaths = 10;
 
     public Path(int pathNum) {
         this.pathNum = pathNum;
