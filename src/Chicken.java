@@ -18,9 +18,7 @@ public class Chicken {
         System.out.println("Jumped");
         }
     }
-    public void move(double distance) {
-        this.x += distance;
-    }
+    
     public void setX(double x) {
     this.x = x;
 }

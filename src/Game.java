@@ -44,7 +44,12 @@ public class Game {
             return;
         chicken.jump();
         currentPath++;
-       chicken.move(125);
+
+int startX = 70;
+int pathWidth = 100;
+int gap = 30;
+
+chicken.setX(startX + currentPath * (pathWidth + gap));
         // Player wins but game does NOT restart automatically
         if (currentPath >= paths.size()) {
 
@@ -53,8 +58,7 @@ public class Game {
 
             player.setBalance(player.getBalance() + won);
 
-            JOptionPane.showMessageDialog(null,
-                    "You Won! Amount: $" + won);
+            JOptionPane.showMessageDialog(null,"You Won! Amount: $" + won);
 
             // Stop current game
             gameOver = true;

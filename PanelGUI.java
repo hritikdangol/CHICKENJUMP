@@ -50,8 +50,8 @@ public class PanelGUI extends JPanel {
                         JOptionPane.showMessageDialog(frame, "Game Over!");
 
                         // Reset chicken only
-                        game.getChicken().setX(50);
-                        game.getChicken().setY(395);
+                        game.getChicken().setX(70);
+                        game.getChicken().setY(620);
                         game.resetDisplay();
                         frame.updateBalance();
                         frame.updateMultiplier();
@@ -111,7 +111,8 @@ public class PanelGUI extends JPanel {
         super.paintComponent(g);
 
         int startX = 70;
-        int startY = 460;
+        int startY = 620;
+        int chickenY = startY - 80;
         int pathWidth = 100;
         int pathHeight = 20;
         int gap = 30;
@@ -126,9 +127,15 @@ public class PanelGUI extends JPanel {
 
         // Draw the chicken ONLY ONCE
         if (game.isGameOver()) {
-            g.drawImage(chickenDeadImg,(int) game.getChicken().getX(),(int) game.getChicken().getY(),150, 65, this);
+          g.drawImage(chickenDeadImg,
+    (int) game.getChicken().getX(),
+    chickenY,
+    100, 80, this);
         } else {
-            g.drawImage( chickenImg,(int) game.getChicken().getX(),  (int) game.getChicken().getY(),  150,  65,this);
+    g.drawImage(chickenImg,
+    (int) game.getChicken().getX(),
+    chickenY,
+    100, 80, this);
         }
     }
 }
