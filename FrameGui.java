@@ -92,7 +92,8 @@ public class FrameGUI extends JFrame {
 
         multiplierLabel.setText("Multiplier: x" + multiplier);
     }
-     public void resetBetUI() {
+
+    public void resetBetUI() {
         betLabel.setText("Bet: 0.0");
         betField.setText("");
     }
@@ -132,8 +133,8 @@ public class FrameGUI extends JFrame {
             game.getPlayer().startGame();
 
             // Reset game for a new round
-            
-            game.initializePaths(); 
+
+            game.initializePaths();
             game.getChicken().setX(10);
             game.getChicken().setY(620);
 

@@ -1,8 +1,10 @@
 package src;
+
 public class Chicken {
     private double x, y, width, height;
     private double velocityY;
     private boolean isJumping;
+
     public Chicken(double x, double y, double width, double height) {
         this.x = x;
         this.y = y;
@@ -11,29 +13,33 @@ public class Chicken {
         this.velocityY = 0;
         this.isJumping = false;
     }
+
     public void jump() {
-         if (!isJumping) {
-        velocityY = -10;
-        isJumping = true;
-        System.out.println("Jumped");
+        if (!isJumping) {
+            velocityY = -10;
+            isJumping = true;
+            System.out.println("Jumped");
         }
     }
-    
-    public void setX(double x) {
-    this.x = x;
-}
 
-public void setY(double y) {
-    this.y = y;
-}
-    public double getX() { 
+    public void setX(double x) {
+        this.x = x;
+    }
+
+    public void setY(double y) {
+        this.y = y;
+    }
+
+    public double getX() {
         return x;
     }
+
     public double getY() {
         return y;
     }
+
     public boolean isJumping() {
         return isJumping;
     }
 
-    }
+}

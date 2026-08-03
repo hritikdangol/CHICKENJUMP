@@ -108,7 +108,7 @@ public class PanelGUI extends JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.drawImage(backgroundImg, 0, 0, getWidth(), getHeight(), this);//background image
+        g.drawImage(backgroundImg, 0, 0, getWidth(), getHeight(), this);// background image
 
         int startX = 10;
         int startY = 560;
@@ -127,9 +127,9 @@ public class PanelGUI extends JPanel {
 
         // Draw the chicken ONLY ONCE
         if (game.isGameOver()) {
-          g.drawImage(chickenDeadImg,(int) game.getChicken().getX(),chickenY,100, 80, this);}
-     else {
-    g.drawImage(chickenImg, (int) game.getChicken().getX(), chickenY,100, 80, this);
+            g.drawImage(chickenDeadImg, (int) game.getChicken().getX(), chickenY, 100, 80, this);
+        } else {
+            g.drawImage(chickenImg, (int) game.getChicken().getX(), chickenY, 100, 80, this);
         }
     }
 }

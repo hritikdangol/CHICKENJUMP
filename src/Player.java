@@ -12,26 +12,26 @@ public class Player {
     }
 
     public Player(double balance) {
-    this.balance = balance;
-    this.currentBet = null;
-}
+        this.balance = balance;
+        this.currentBet = null;
+    }
 
     public double getBalance() {
         return balance;
     }
 
     public Double getCurrentBet() {
-    return currentBet;
-}
+        return currentBet;
+    }
 
     public void setBalance(double balance) {
         this.balance = balance;
     }
 
     public void resetBet() {
-    currentBet = null;
-    startGame = false;
-}
+        currentBet = null;
+        startGame = false;
+    }
 
     public void placeBet(double betAmount)
             throws Invalidbetexception, InsufficientbalanceException, InvalidstartGameException {
@@ -50,8 +50,7 @@ public class Player {
     public void startGame() throws InvalidstartGameException {
         if (currentBet == null || currentBet <= 0) {
             throw new InvalidstartGameException("Place a bet before starting the game.");
-        }
-        else
-        startGame = true;
+        } else
+            startGame = true;
     }
 }
