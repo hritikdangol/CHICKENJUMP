@@ -70,13 +70,16 @@ chicken.setX(startX + currentPath * (pathWidth + gap));
 
         Path current = paths.get(currentPath);
 
-        if (current.hasFire()) {
-            System.out.println("Game over");
-            firePathIndex = currentPath;// 0-15
-            gameOver = true;
-            started = false;
+       if (current.hasFire()) {
+    System.out.println("Game over");
+
+    firePathIndex = currentPath;//0-25
+    gameOver = true;
+    started = false;
+
+    player.resetBet();   
+}
         }
-    }
 
     public void cashOut() {
 
@@ -145,7 +148,6 @@ chicken.setX(startX + currentPath * (pathWidth + gap));
     }
 
     public void resetDisplay() {
-        gameOver = false;
         firePathIndex = -1;
     }
 }

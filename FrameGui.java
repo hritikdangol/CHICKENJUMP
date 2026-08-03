@@ -32,7 +32,7 @@ public class FrameGUI extends JFrame {
         betButton.addActionListener(e -> placeBet());
         startButton.addActionListener(e -> startGame());
 
-        betLabel = new JLabel("Bet: " + game.getPlayer().getCurrentBet());
+        betLabel = new JLabel("Bet:0.0 " + game.getPlayer().getCurrentBet());
         multiplierLabel = new JLabel("Multiplier: x1.00");
 
         cashOutButton = new JButton("Cash Out");

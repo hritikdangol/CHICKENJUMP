@@ -111,7 +111,7 @@ public class PanelGUI extends JPanel {
         g.drawImage(backgroundImg, 0, 0, getWidth(), getHeight(), this);//background image
 
         int startX = 10;
-        int startY = 620;
+        int startY = 560;
         int chickenY = startY - 80;
         int pathWidth = 100;
         int pathHeight = 20;

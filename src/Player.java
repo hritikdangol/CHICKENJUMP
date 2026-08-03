@@ -12,26 +12,26 @@ public class Player {
     }
 
     public Player(double balance) {
-        this.balance = balance;
-        this.currentBet = 0.00;
-    }
+    this.balance = balance;
+    this.currentBet = null;
+}
 
     public double getBalance() {
         return balance;
     }
 
-    public double getCurrentBet() {
-        return currentBet;
-    }
+    public Double getCurrentBet() {
+    return currentBet;
+}
 
     public void setBalance(double balance) {
         this.balance = balance;
     }
 
     public void resetBet() {
-        currentBet = 0.0;
-        startGame = false;
-    }
+    currentBet = null;
+    startGame = false;
+}
 
     public void placeBet(double betAmount)
             throws Invalidbetexception, InsufficientbalanceException, InvalidstartGameException {
