@@ -18,6 +18,7 @@ public class PanelGUI extends JPanel {
 
         this.game = game;
         this.frame = frame;
+        
         chickenImg = new ImageIcon("assets/chicken.png").getImage();
         chickenDeadImg = new ImageIcon("assets/chickendead.png").getImage();
         backgroundImg = new ImageIcon("assets/background.png").getImage();

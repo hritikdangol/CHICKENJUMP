@@ -23,7 +23,7 @@ public class FrameGUI extends JFrame {
         setTitle("Chicken Jump");
         setSize(1366, 768);
         setLocationRelativeTo(null);//center ma rakha
-        setResizable(false);
+        setResizable(false);  //resize off garxa
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         balanceLabel = new JLabel("Balance: " + game.getPlayer().getBalance());
