@@ -11,7 +11,7 @@ public class Main {
 
             Player player = new Player(1000);
 
-            Chicken chicken = new Chicken(50, 395, 155, 65);
+            Chicken chicken = new Chicken(50, 395, 175, 70);
 
             Game game = new Game(player, chicken);
 

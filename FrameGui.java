@@ -132,8 +132,8 @@ public class FrameGUI extends JFrame {
             game.getPlayer().startGame();
 
             // Reset game for a new round
-            game.initializePaths(); // or game.resetGame() if that's your method
-
+            
+            game.initializePaths(); 
             game.getChicken().setX(50);
             game.getChicken().setY(395);
 

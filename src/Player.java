@@ -51,6 +51,7 @@ public class Player {
         if (currentBet == null || currentBet <= 0) {
             throw new InvalidstartGameException("Place a bet before starting the game.");
         }
+        else
         startGame = true;
     }
 }
