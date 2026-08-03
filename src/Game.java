@@ -45,7 +45,7 @@ public class Game {
         chicken.jump();
         currentPath++;
 
-int startX = 10;   //juump gap
+int startX = 40;   //juump gap
 int pathWidth = 100;
 int gap = 30;
 
@@ -148,6 +148,9 @@ chicken.setX(startX + currentPath * (pathWidth + gap));
     }
 
     public void resetDisplay() {
-        firePathIndex = -1;
-    }
+    firePathIndex = -1;
+    gameOver = false;
+    started = false;
+    currentPath = 0;
+}
 }

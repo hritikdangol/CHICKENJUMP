@@ -11,7 +11,7 @@ public class Path {
 
     public Path(int pathNum) {
         this.pathNum = pathNum;
-        this.multiplier = 1.0 + (pathNum * 1.25);
+        this.multiplier = 1.0 + (pathNum * 0.50);
         this.fire = random.nextInt(100) < 30; // fire xa ki xaina random generate garxa ra 30 % chane hunhac harek
                                               // pathma
     }

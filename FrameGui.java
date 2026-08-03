@@ -1,8 +1,8 @@
 import java.awt.*;
 import javax.swing.*;
 import src.Game;
-import src.Invalidbetexception;
 import src.InsufficientbalanceException;
+import src.Invalidbetexception;
 import src.InvalidstartGameException;
 
 public class FrameGUI extends JFrame {
@@ -21,8 +21,9 @@ public class FrameGUI extends JFrame {
 
         this.game = game;
         setTitle("Chicken Jump");
-        setExtendedState(JFrame.MAXIMIZED_BOTH);
-        setLocationRelativeTo(null);
+        setSize(1366, 768);
+        setLocationRelativeTo(null);//center ma rakha
+        setResizable(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         balanceLabel = new JLabel("Balance: " + game.getPlayer().getBalance());
@@ -42,7 +43,7 @@ public class FrameGUI extends JFrame {
 
             game.cashOut();
 
-            game.getChicken().setX(10);
+            game.getChicken().setX(40);
             game.getChicken().setY(620);
             panel.repaint();
             game.resetDisplay();
@@ -135,7 +136,7 @@ public class FrameGUI extends JFrame {
             // Reset game for a new round
 
             game.initializePaths();
-            game.getChicken().setX(10);
+            game.getChicken().setX(40);
             game.getChicken().setY(620);
 
             // Allow playing again

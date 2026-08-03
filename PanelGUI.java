@@ -1,11 +1,10 @@
 import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import javax.swing.*;
-import src.Game;
-import src.Path;
-import javax.sound.sampled.*;//sound ko lagi
 import java.io.File;
+import javax.sound.sampled.*;
+import javax.swing.*;
+import src.Game;//sound ko lagi
 
 public class PanelGUI extends JPanel {
     private Game game;
@@ -35,6 +34,7 @@ public class PanelGUI extends JPanel {
                 if (e.getKeyCode() == KeyEvent.VK_SPACE) { // spacebar====jump ko lagi
 
                     if (!game.isStarted()) {
+                        
                         return;
                     }
                     game.jump();
@@ -49,13 +49,12 @@ public class PanelGUI extends JPanel {
                         JOptionPane.showMessageDialog(frame, "Game Over!");
 
                         // Reset chicken only
-                        game.getChicken().setX(10);
+                        game.getChicken().setX(40);
                         game.getChicken().setY(620);
                         game.resetDisplay();
                         frame.updateBalance();
                         frame.updateMultiplier();
                         frame.resetBetUI();
-
                         repaint();
                     }
                 }
@@ -110,8 +109,8 @@ public class PanelGUI extends JPanel {
         super.paintComponent(g);
         g.drawImage(backgroundImg, 0, 0, getWidth(), getHeight(), this);// background image
 
-        int startX = 10;
-        int startY = 560;
+        int startX = 40;
+        int startY = 590;
         int chickenY = startY - 80;
         int pathWidth = 100;
         int pathHeight = 20;

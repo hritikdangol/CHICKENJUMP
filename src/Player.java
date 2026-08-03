@@ -3,8 +3,7 @@ package src;
 public class Player {
     private double balance = 0;
     private Double currentBet = null;
-    // double doesnt holds nullvalue so we use Double class which can hold null
-    // value
+    // double doesnt holds nullvalue so we use Double class which can hold null value
     private boolean startGame = false;
 
     public Player() {
