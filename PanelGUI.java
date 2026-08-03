@@ -129,9 +129,7 @@ public class PanelGUI extends JPanel {
         if (game.isGameOver()) {
           g.drawImage(chickenDeadImg,(int) game.getChicken().getX(),chickenY,100, 80, this);}
      else {
-    g.drawImage(chickenImg,
-    (int) game.getChicken().getX(),
-    chickenY,100, 80, this);
+    g.drawImage(chickenImg, (int) game.getChicken().getX(), chickenY,100, 80, this);
         }
     }
 }
