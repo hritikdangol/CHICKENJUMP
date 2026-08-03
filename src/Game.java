@@ -44,7 +44,7 @@ public class Game {
             return;
         chicken.jump();
         currentPath++;
-        chicken.move(125);
+       chicken.move(125);
         // Player wins but game does NOT restart automatically
         if (currentPath >= paths.size()) {
 

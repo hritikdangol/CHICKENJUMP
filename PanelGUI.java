@@ -42,7 +42,9 @@ public class PanelGUI extends JPanel {
 
                     frame.updateMultiplier();
                     frame.updateBalance();
-                    repaint(); // game sakesi feri suru garna lai
+                    repaint();
+
+                    // game sakesi feri suru garna lai
                     if (game.isGameOver()) {
                         playSound("assets/deadchickesound.wav");
                         JOptionPane.showMessageDialog(frame, "Game Over!");
@@ -104,42 +106,29 @@ public class PanelGUI extends JPanel {
         }
     }
 
-   @Override
-protected void paintComponent(Graphics g) {
-    super.paintComponent(g);
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
 
-    int startX = 70;
-    int startY = 460;
-    int pathWidth = 100;
-    int pathHeight = 20;
-    int gap = 30;
+        int startX = 70;
+        int startY = 460;
+        int pathWidth = 100;
+        int pathHeight = 20;
+        int gap = 30;
 
-    // Draw all paths
-    for (int i = 0; i < game.getPaths().size(); i++) {
-        int x = startX + i * (pathWidth + gap);
+        // Draw all paths
+        for (int i = 0; i < game.getPaths().size(); i++) {
+            int x = startX + i * (pathWidth + gap);
 
-        g.setColor(new Color(139, 69, 19));
-        g.fillRect(x, startY, pathWidth, pathHeight);
-    }
+            g.setColor(new Color(139, 69, 19));
+            g.fillRect(x, startY, pathWidth, pathHeight);
+        }
 
-    // Draw the chicken ONLY ONCE
-    if (game.isGameOver()) {
-        g.drawImage(
-                chickenDeadImg,
-                (int) game.getChicken().getX(),
-                (int) game.getChicken().getY(),
-                150,
-                65,
-                this);
-    } else {
-        g.drawImage(
-                chickenImg,
-                (int) game.getChicken().getX(),
-                (int) game.getChicken().getY(),
-                150,
-                65,
-                this);
+        // Draw the chicken ONLY ONCE
+        if (game.isGameOver()) {
+            g.drawImage(chickenDeadImg,(int) game.getChicken().getX(),(int) game.getChicken().getY(),150, 65, this);
+        } else {
+            g.drawImage( chickenImg,(int) game.getChicken().getX(),  (int) game.getChicken().getY(),  150,  65,this);
+        }
     }
 }
-}
-

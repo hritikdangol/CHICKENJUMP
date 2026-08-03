@@ -21,7 +21,7 @@ public class FrameGUI extends JFrame {
 
         this.game = game;
         setTitle("Chicken Jump");
-        setSize(900, 600);
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
