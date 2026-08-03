@@ -12,14 +12,14 @@ public class PanelGUI extends JPanel {
     private FrameGUI frame;
 
     private Image chickenImg;
-    private Image fireImg;
+    private Image chickenDeadImg;
 
     public PanelGUI(Game game, FrameGUI frame) {
 
         this.game = game;
         this.frame = frame;
         chickenImg = new ImageIcon("assets/chicken.png").getImage();
-        fireImg = new ImageIcon("assets/fire.png").getImage();
+        chickenDeadImg = new ImageIcon("assets/chickendead.png").getImage();
         playBackgroundMusic();
 
         // Background color
@@ -104,31 +104,42 @@ public class PanelGUI extends JPanel {
         }
     }
 
-    @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
+   @Override
+protected void paintComponent(Graphics g) {
+    super.paintComponent(g);
 
-        int startX = 70;
-        int startY = 460;
-        int pathWidth = 100;
-        int pathHeight = 20;
-        int gap = 30;
+    int startX = 70;
+    int startY = 460;
+    int pathWidth = 100;
+    int pathHeight = 20;
+    int gap = 30;
 
-        for (int i = 0; i < game.getPaths().size(); i++) {
-            Path path = game.getPaths().get(i);
-            int x = startX + i * (pathWidth + gap);
-            // Draw path
-            g.setColor(new Color(139, 69, 19));
-            g.fillRect(x, startY, pathWidth, pathHeight);
+    // Draw all paths
+    for (int i = 0; i < game.getPaths().size(); i++) {
+        int x = startX + i * (pathWidth + gap);
 
-            // Show fire only on the when the player hit
-            if (game.isGameOver() && i == game.getFirePathIndex()) {
-
-           g.drawImage(fireImg, x-20, startY - 120, 170, 140, this);
-            }
-        }
-        g.drawImage(
-                chickenImg, (int) game.getChicken().getX(), (int) game.getChicken().getY(), 150, 65, this);
+        g.setColor(new Color(139, 69, 19));
+        g.fillRect(x, startY, pathWidth, pathHeight);
     }
 
+    // Draw the chicken ONLY ONCE
+    if (game.isGameOver()) {
+        g.drawImage(
+                chickenDeadImg,
+                (int) game.getChicken().getX(),
+                (int) game.getChicken().getY(),
+                150,
+                65,
+                this);
+    } else {
+        g.drawImage(
+                chickenImg,
+                (int) game.getChicken().getX(),
+                (int) game.getChicken().getY(),
+                150,
+                65,
+                this);
+    }
 }
+}
+
