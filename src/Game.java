@@ -72,7 +72,7 @@ chicken.setX(startX + currentPath * (pathWidth + gap));
        if (current.hasFire()) {
     System.out.println("Game over");
 
-    firePathIndex = currentPath;//0-10
+    firePathIndex = currentPath;//0-10 ko pathh
     gameOver = true;
     started = false;
 
