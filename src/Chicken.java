@@ -2,7 +2,6 @@ package src;
 
 public class Chicken {
     private double x, y, width, height;
-    private double velocityY;
     private boolean isJumping;
 
     public Chicken(double x, double y, double width, double height) {
@@ -10,13 +9,11 @@ public class Chicken {
         this.y = y;
         this.width = width;
         this.height = height;
-        this.velocityY = 0;
         this.isJumping = false;
     }
 
     public void jump() {
         if (!isJumping) {
-            velocityY = -10;
             isJumping = true;
             System.out.println("Jumped");
         }

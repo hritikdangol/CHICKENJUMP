@@ -33,9 +33,9 @@ public class Game {
 
         currentPath = 0;
 
-        gameOver = false; // Reset game over
+        gameOver = false; 
 
-        firePathIndex = -1; // Remove old fire
+        firePathIndex = -1;
         started = true;
     }
 
@@ -53,8 +53,7 @@ chicken.setX(startX + currentPath * (pathWidth + gap));
         // Player wins but game does NOT restart automatically
         if (currentPath >= paths.size()) {
 
-            double won = getPlayer().getCurrentBet()
-                    * paths.get(paths.size() - 1).getMultiplier();
+            double won = getPlayer().getCurrentBet()* paths.get(paths.size() - 1).getMultiplier();
 
             player.setBalance(player.getBalance() + won);
 
